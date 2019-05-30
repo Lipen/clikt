@@ -1,16 +1,15 @@
 # Documenting Scripts
 
-Clikt takes care of creating formatted help messages for commands. There
-are a number of ways to customize the default behavior. You can also
-implement your own [`HelpFormatter`](api/clikt/com.github.ajalt.clikt.output/-help-formatter/) and set it on the [command's
-context](commands.md#customizing-contexts).
+Clikt takes care of creating formatted help messages for commands. There are a number of ways to
+customize the default behavior. You can also implement your own
+[`HelpFormatter`](api/clikt/com.github.ajalt.clikt.output/-help-formatter/) and set it on the
+[command's context](commands.md#customizing-contexts).
 
 ## Help Texts
 
-[Commands](api/clikt/com.github.ajalt.clikt.core/-clikt-command/) and parameters accept a `help` argument. Commands also accept an
-`epilog` argument, which is printed after the parameters and commands on
-the help page. All text is automatically re-wrapped to the terminal
-width.
+[Commands](api/clikt/com.github.ajalt.clikt.core/-clikt-command/) and parameters accept a `help`
+argument. Commands also accept an `epilog` argument, which is printed after the parameters and
+commands on the help page. All text is automatically re-wrapped to the terminal width.
 
 ```kotlin tab="Example"
 class Hello : CliktCommand(help = """
@@ -44,14 +43,14 @@ in the usage string. It is possible to add a help string to arguments
 which will be added to the help page, but the Unix convention is to just
 describe arguments in the command help.
 
-## Preventing Rewrapping
+## Preformatting Paragraphs
 
 By default, Clikt will rewrap all paragraphs in your text to the terminal width. This can be
 undesirable if you have some preformatted text, such as a bulleted list.
 
-You can prevent rewrapping for a paragraph by adding the marker `#{nowrap}` on a line by itself
-before a paragraph. The line with the marker will be removed from the output, and the following
-paragraph will not be rewrapped.
+You can preformat a paragraph by surrounding it with markdown-style triple backticks. The backticks
+will be removed from the output, and if the backticks are on a line by themselves, the line will be
+removed. All whitespace and newlines in the paragraph will be preserved, and will be be rewrapped.
 
 
 ```kotlin tab="Example"
@@ -59,9 +58,10 @@ class Tool : NoRunCliktCommand(help = """This is my command.
 
       This paragraph will be wrapped, but the following list will not:
 
-      #{nowrap}
+      ```
       - This is a list
-      - It's newlines will remain intact
+      - Its newlines will remain intact
+      ```
 
       This is a new paragraph that will be wrapped if it's wider than the teminal width.
       """)

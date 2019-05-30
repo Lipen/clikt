@@ -89,7 +89,7 @@ nav:
       - 'Issuing Warnings': commands/#issuing-warnings
   - 'Documenting Scripts':
       - 'Help Texts': documenting.md
-      - 'Preventing Rewrapping': documenting/#preventing-rewrapping
+      - 'Preformatting Paragraphs': documenting/#preformatting-paragraphs
       - 'Subcommand Short Help': documenting/#subcommand-short-help
       - 'Help Option Customization': documenting/#help-option-customization
       - 'Default Values in Help': documenting/#default-values-in-help
